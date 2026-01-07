@@ -226,10 +226,10 @@ async function runCLI() {
 
 // ---------------- Runner ----------------
 
-const mode = process.argv[2];
+const mode = process.argv[2] || "api";
 
-if (mode === "api") {
+// if (mode === "api") {
   app.listen(PORT, () => console.log(`API running at http://localhost:${PORT}`));
-} else {
-  runCLI();
-}
+// } else {
+//   runCLI();
+// }
