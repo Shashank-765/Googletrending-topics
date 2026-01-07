@@ -6,11 +6,15 @@ import inquirer from "inquirer";
 import fs from "fs";
 import pLimit from "p-limit";
 import puppeteer from "puppeteer";
+import cors from "cors";
+
 
 
 const app = express();
 const PORT = 5003;
 const limitConcurrency = pLimit(5);
+
+app.use(cors({ origin: "*" }));
 
 // Google News categories
 const CATEGORIES = {
