@@ -16,13 +16,15 @@ const limitConcurrency = pLimit(5);
 
 app.use(
   cors({
-    origin: "*",
+    origin: (origin, cb) => cb(null, true),
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.options("*", cors());
+app.options(/.*/, cors());
+
 // Google News categories
 const CATEGORIES = {
   top: "",
