@@ -11,7 +11,7 @@ import cors from "cors";
 
 
 const app = express();
-const PORT = 5005;
+const PORT = 5003;
 const limitConcurrency = pLimit(5);
 
 app.use(
@@ -98,6 +98,7 @@ async function fetchThumbnailFromGoogleNewsPage(url) {
       await page.goto(finalUrl, { waitUntil: "load", timeout: 20000 });
       await sleep(2500);
       img = await extractImage(page);
+      console.log('img', img)
       if (img) return img;
     }
 
